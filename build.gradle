@@ -49,8 +49,7 @@ jar {
 
     manifest {
         attributes('Implementation-Title': project.name,
-                   'Implementation-Version': project.version,
-                   'Main-Class': application.mainClass.get())
+                   'Implementation-Version': project.version)
     }
 
     from {
