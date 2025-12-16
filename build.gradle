@@ -57,7 +57,7 @@ jar {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 
-    archivesBaseName = rootProject.name + "-" + getBuildDate()
+    archiveBaseName.set(rootProject.name + "-" + getBuildDate())
 
     exclude 'META-INF/*.RSA'
     exclude 'META-INF/*.SF'
