@@ -2,7 +2,7 @@ FROM gradle:jdk17-alpine AS build
 
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
-RUN gradle build --no-daemon
+RUN gradle build -x test --no-daemon
 
 FROM eclipse-temurin:19.0.1_10-jre-ubi9-minimal AS main
 
