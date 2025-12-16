@@ -39,6 +39,11 @@ dependencies {
 application {
   mainClass = 'fi.ylihallila.server.Main'
 }
+
+base {
+    archivesName.set(rootProject.name + "-" + getBuildDate())
+}
+
 group = 'fi.yli-hallila'
 version = '1.1-SNAPSHOT'
 description = 'Open Microanatomy Server'
@@ -50,14 +55,12 @@ jar {
     manifest {
         attributes('Implementation-Title': project.name,
                    'Implementation-Version': project.version,
-                   'Main-Class': application.mainClass)
+                   'Main-Class': application.mainClass.get())
     }
 
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
-
-    archiveBaseName.set(rootProject.name + "-" + getBuildDate())
 
     exclude 'META-INF/*.RSA'
     exclude 'META-INF/*.SF'
